@@ -1,30 +1,30 @@
-export default function Form(){
+"use client"
+import * as React from "react";
+import Description from './Description';
+import Name from './Name';
+import SubmitButton from "./SubmitButton";
+import Projects from "./Projects";
+
+export default function Form() {
+    const [name, setName] = React.useState("");
+    const [description, setDescription] = React.useState("");
+    const [numProjects, setNumProjects] = React.useState(1);
+    const [projects, setProjects] = React.useState([{title: "", description: ""}]);
+    function submitForm() {
+        console.log("Name: ", name);
+        console.log("Description: ", description);
+    }
+
     return (
-        <div className="py-4 flex justify-center items-center pt-10">
-            <form className="border-black border-2 rounded-lg p-8 sm:w-[500px]">
-                <div className="mb-3 flex justify-center">
-                    <div>
-                        <label htmlFor="inputName" className="form-label font-medium tracking-tighter">Name</label><br></br>
-                        <input type="text" 
-                        className="form-control px-2 py-1 rounded-md border-2 border-black/10 sm:w-96" 
-                        id="input Name" 
-                        placeholder="Enter your name"
-                        aria-describedby="emailHelp"/>
-                    </div>
-                </div>
-                <div className="mb-3 flex justify-center">
-                    <div>
-                        <label htmlFor="description" className="form-label tracking-tighter font-medium">Brief Description</label><br></br>
-                        <textarea
-                        className="form-control px-2 py-1 rounded-md border-2 border-black/10 h-40 sm:w-96" 
-                        placeholder="I am a Computer Science student at Rajiv Gandhi Institute of Petroleum Technology. My passion lies in Machine Learning and Web Development, and during my spare time, I actively participate in open-source projects..."
-                        id="description"/>
-                    </div>
-                </div>
-                <div className="flex justify-end">
-                    <button type="submit" className="btn btn-primary bg-black rounded-lg px-4 py-1 hover:bg-black/80 font-semibold text-white">Submit</button>
-                </div>
+        <div className="py-4 flex justify-center items-center pt-10 px-2">
+            <form className="border-2 border-black/30 rounded-lg p-8 w-full max-w-3xl">
+                <Name name={name} setName={setName}/>
+                <Description description={description} setDescription={setDescription}/>
+                
+                <Projects numProjects={numProjects} setNumProjects={setNumProjects} projects={projects} setProjects={setProjects}/>
+
+                <SubmitButton submitForm={submitForm}/>
             </form>
         </div>
-    )
+    );
 }
