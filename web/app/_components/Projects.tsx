@@ -4,15 +4,15 @@ import DeleteIcon from '../public/icons/delete.png';
 interface Project {
     title: string;
     description: string;
+    link: string;
 }
 
-export default function Projects({numProjects, setNumProjects, projects, setProjects}:
-    {numProjects:number, setNumProjects:React.Dispatch<React.SetStateAction<number>>,
-    projects: Project[], setProjects: React.Dispatch<React.SetStateAction<Project[]>>}) {
-    return(
+export default function Projects({projects, setProjects}:
+    {projects: Project[], setProjects: React.Dispatch<React.SetStateAction<Project[]>>}) {
+    return (
         <div className="mb-3">
             <p className="block font-bold text-lg underline underline-offset-4 tracking-tighter mb-3">Projects:</p>
-            {[...Array(numProjects)].map((_, index) => (
+            {projects.map((project, index) => (
                 <div key={index} className="mb-3">
                     <label htmlFor={`projectName${index}`} className="block font-medium tracking-tighter mb-1">Project Name</label>
                     <input 
@@ -20,8 +20,7 @@ export default function Projects({numProjects, setNumProjects, projects, setProj
                         id={`projectName${index}`} 
                         className="w-full px-2 py-1 rounded-md border-2 border-black/10" 
                         placeholder="Enter the project name"
-                        aria-describedby="projectNameHelp"
-                        value={projects[index].title}
+                        value={project.title}
                         onChange={(e) => {
                             const updatedProjects = [...projects];
                             updatedProjects[index].title = e.target.value;
@@ -32,40 +31,46 @@ export default function Projects({numProjects, setNumProjects, projects, setProj
                     <textarea
                         id={`projectDescription${index}`}
                         className="w-full px-2 py-1 rounded-md border-2 border-black/10 min-h-[160px]" 
-                        placeholder="I am a Computer Science student at Rajiv Gandhi Institute of Petroleum Technology. My passion lies in Machine Learning and Web Development, and during my spare time, I actively participate in open-source projects..."
-                        aria-describedby="projectDescriptionHelp"
-                        value={projects[index].description}
+                        placeholder="Enter project description"
+                        value={project.description}
                         onChange={(e) => {
                             const updatedProjects = [...projects];
                             updatedProjects[index].description = e.target.value;
                             setProjects(updatedProjects);
                         }}
                     />
-                    <button onClick={(e) => {
-                        e.preventDefault();
+                    <label htmlFor={`projectLink${index}`} className="block font-medium tracking-tighter mb-1">Project Link</label>
+                    <input
+                        type="url"
+                        id={`projectLink${index}`}
+                        className="w-full px-2 py-1 rounded-md border-2 border-black/10 mb-2"
+                        placeholder="Enter project link"
+                        value={project.link}
+                        onChange={(e) => {
+                            const updatedProjects = [...projects];
+                            updatedProjects[index].link = e.target.value;
+                            setProjects(updatedProjects);
+                        }}
+                    />
+                    <button
+                    className='border-black border-2 rounded-lg px-2 py-1 hover:bg-black/10'
+                    onClick={() => {
                         const updatedProjects = projects.filter((_, i) => i !== index);
                         setProjects(updatedProjects);
-                        setNumProjects(numProjects - 1);
-                    }}><Image src={DeleteIcon} alt='delete' className='h-6 w-auto'></Image></button>
+                    }}>
+                        <Image src={DeleteIcon} alt='delete' className='h-6 w-auto'></Image>
+                    </button>
                 </div>
             ))}
-            {
-                numProjects === 0 ? 
-                <button 
-                    type="button" 
-                    className="bg-black rounded-lg px-4 py-2 hover:bg-black/80 font-semibold text-white"
-                    onClick={() => {
-                        setProjects([...projects, {title: "", description: ""}]);
-                        setNumProjects(numProjects + 1)}}
-                >Add a Project</button>:
-                <button 
-                    type="button" 
-                    className="bg-black rounded-lg px-4 py-2 hover:bg-black/80 font-semibold text-white"
-                    onClick={() => {
-                        setProjects([...projects, {title: "", description: ""}]);
-                        setNumProjects(numProjects + 1)}}
-                >Add more</button>
-            }
+            <button 
+                type="button" 
+                className="bg-black rounded-lg px-4 py-2 hover:bg-black/80 font-semibold text-white"
+                onClick={() => {
+                    setProjects([...projects, {title: "", description: "", link: ""}]);
+                }}
+            >
+                {projects.length === 0 ? "Add a Project" : "Add more"}
+            </button>
         </div>
     )
 }

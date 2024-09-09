@@ -8,8 +8,7 @@ import Projects from "./Projects";
 export default function Form() {
     const [name, setName] = React.useState("");
     const [description, setDescription] = React.useState("");
-    const [numProjects, setNumProjects] = React.useState(1);
-    const [projects, setProjects] = React.useState([{title: "", description: ""}]);
+    const [projects, setProjects] = React.useState([{title: "", description: "", link: ""}]);
     function submitForm() {
         console.log("Name: ", name);
         console.log("Description: ", description);
@@ -21,7 +20,7 @@ export default function Form() {
                 <Name name={name} setName={setName}/>
                 <Description description={description} setDescription={setDescription}/>
                 
-                <Projects numProjects={numProjects} setNumProjects={setNumProjects} projects={projects} setProjects={setProjects}/>
+                <Projects projects={projects} setProjects={setProjects}/>
 
                 <SubmitButton submitForm={submitForm}/>
             </form>
