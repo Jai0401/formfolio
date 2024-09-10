@@ -6,15 +6,17 @@ import SubmitButton from "./SubmitButton";
 import Projects from "./Projects";
 import Links from "./Links";
 import axios from "axios";
+import Photo from "./Photo";
 
 export default function Form() {
     const [name, setName] = React.useState("");
     const [description, setDescription] = React.useState("");
     const [projects, setProjects] = React.useState([{title: "", description: "", link: ""}]);
     const [links, setLinks] = React.useState([{title: "GitHub", url: ""},{title: "LinkedIn", url: ""},{title: "Resume", url: ""},{title:'Email', url:''}]);
+    const [photo, setPhoto] = React.useState<File | undefined>();
     function submitForm(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        axios.post('http://localhost:4000/form', {name, description, projects, links})
+        axios.post('http://localhost:4000/form', {photo, name, description, projects, links})
             .then(response => {
                 console.log('Form submitted successfully', response);
             })
@@ -26,6 +28,7 @@ export default function Form() {
     return (
         <div className="py-2 flex justify-center items-center px-2">
             <form className="border-2 border-black/30 rounded-lg p-8 w-full max-w-3xl" onSubmit={submitForm}>
+                <Photo photo={photo} setPhoto={setPhoto}/>
                 <Name name={name} setName={setName}/>
                 <Description description={description} setDescription={setDescription}/>
                 <Projects projects={projects} setProjects={setProjects}/>
