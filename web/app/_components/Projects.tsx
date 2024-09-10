@@ -11,7 +11,7 @@ export default function Projects({projects, setProjects}:
     {projects: Project[], setProjects: React.Dispatch<React.SetStateAction<Project[]>>}) {
     return (
         <div className="mb-3">
-            <p className="block font-bold text-lg underline underline-offset-4 tracking-tighter mb-3">Projects:</p>
+            <p className="block font-bold text-lg underline underline-offset-4 tracking-tighter mb-3 mt-3">Projects:</p>
             {projects.map((project, index) => (
                 <div key={index} className="mb-3">
                     <label htmlFor={`projectName${index}`} className="block font-medium tracking-tighter mb-1">Project Name</label>
@@ -53,7 +53,7 @@ export default function Projects({projects, setProjects}:
                         }}
                     />
                     <button
-                    className='border-black border-2 rounded-lg px-2 py-1 hover:bg-black/10'
+                    className='px-2 py-1 rounded-lg bg-black/10 hover:bg-transparent'
                     onClick={() => {
                         const updatedProjects = projects.filter((_, i) => i !== index);
                         setProjects(updatedProjects);
