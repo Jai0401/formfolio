@@ -53,6 +53,7 @@ export default function Projects({projects, setProjects}:
                         }}
                     />
                     <button
+                    type='button'
                     className='px-2 py-1 rounded-lg bg-black/10 hover:bg-transparent'
                     onClick={() => {
                         const updatedProjects = projects.filter((_, i) => i !== index);
