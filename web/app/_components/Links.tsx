@@ -27,7 +27,7 @@ export default function Links({links, setLinks}: {links: Link[], setLinks: React
                         }}
                     />
                     <input
-                        type='url'
+                        type='url|email'
                         id={`linkUrl${index}`}
                         className='w-full px-2 py-1 rounded-md border-2 border-black/10'
                         placeholder='Enter link URL'

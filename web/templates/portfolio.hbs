@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}}'s Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'DM Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .header-text h1 {
+            margin: 0;
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .description {
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            color: #333;
+            font-weight: 400;
+        }
+        .projects h2 {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .project {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .project:hover {
+            background-color: #f0f0f0;
+        }
+        .project h3 {
+            font-size: 1.1em;
+            margin: 0 0 5px;
+            font-weight: 500;
+        }
+        .project p {
+            margin: 0;
+            font-size: 0.85em;
+            color: #555;
+        }
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+        .year {
+            float: right;
+            font-size: 0.8em;
+            color: #666;
+        }
+        .links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .links a {
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            {{#if photoUrl}}
+                <img src="{{photoUrl}}" alt="{{name}}'s photo">
+            {{/if}}
+            <div class="header-text">
+                <h1>Hey, I'm {{name}}.</h1>
+            </div>
+        </div>
+
+        <div class="description">
+            <p>{{description}}</p>
+        </div>
+
+        <div class="projects">
+            <h2>Projects</h2>
+            {{#each projects}}
+                <a href="{{link}}" target="_blank">
+                    <div class="project">
+                        <span class="year">{{year}}</span>
+                        <h3>{{title}}</h3>
+                        <p>{{description}}</p>
+                    </div>
+                </a>
+            {{/each}}
+        </div>
+
+        <div class="links">
+            {{#each links}}
+                <a href="{{url}}" target="_blank">{{title}} →</a>
+            {{/each}}
+        </div>
+    </div>
+</body>
+</html>
