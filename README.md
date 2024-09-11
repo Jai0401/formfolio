@@ -1,2 +1,2 @@
 # formfolio
-Effortlessly create a personalized portfolio website in minutes by filling out a simple form.
+Effortlessly create a personalized portfolio website in minutes by just filling out a simple form.
