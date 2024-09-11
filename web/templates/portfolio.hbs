@@ -150,19 +150,22 @@
                 <a href="{{url}}" target="_blank">{{title}} →</a>
             {{/each}}
         </div>
+        
+        {{#if projects}}
+            <div class="projects">
+                <h2>Projects</h2>
+                {{#each projects}}
+                    <a href="{{link}}" target="_blank">
+                        <div class="project">
+                            <span class="year">{{year}}</span>
+                            <h3>{{title}}</h3>
+                            <p>{{description}}</p>
+                        </div>
+                    </a>
+                {{/each}}
+            </div>
+        {{/if}}
 
-        <div class="projects">
-            <h2>Projects</h2>
-            {{#each projects}}
-                <a href="{{link}}" target="_blank">
-                    <div class="project">
-                        <span class="year">{{year}}</span>
-                        <h3>{{title}}</h3>
-                        <p>{{description}}</p>
-                    </div>
-                </a>
-            {{/each}}
-        </div>
     </div>
 
     <button class="theme-toggle" aria-label="Toggle dark mode">🌓</button>
