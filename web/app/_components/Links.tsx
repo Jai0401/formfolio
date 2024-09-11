@@ -17,7 +17,7 @@ export default function Links({links, setLinks}: {links: Link[], setLinks: React
                     <input 
                         type='text' 
                         id={`linkTitle${index}`} 
-                        className='px-2 py-1 rounded-md border-2 border-black/10' 
+                        className='px-2 py-1 max-w-20 rounded-md border-2 border-black/10' 
                         placeholder='Enter the link title'
                         value={link.title}
                         onChange={(e) => {
@@ -39,6 +39,7 @@ export default function Links({links, setLinks}: {links: Link[], setLinks: React
                         }}
                     />
                     <button
+                    type='button'
                     className='px-2 py-1 rounded-lg bg-black/10 hover:bg-transparent'
                     onClick={() => {
                         const updatedLinks = links.filter((_, i) => i !== index);

@@ -59,6 +59,9 @@
         }
         .project:hover {
             background-color: #e0e0e0;
+            scale: 1.01;
+            transition: 0.3s;
+
         }
         .project h3 {
             font-family: 'DM Sans', sans-serif;
@@ -107,6 +110,12 @@
             <p>{{description}}</p>
         </div>
 
+        <div class="links">
+            {{#each links}}
+                <a href="{{url}}" target="_blank">{{title}} →</a>
+            {{/each}}
+        </div>
+
         <div class="projects">
             <h2>Projects</h2>
             {{#each projects}}
@@ -120,11 +129,7 @@
             {{/each}}
         </div>
 
-        <div class="links">
-            {{#each links}}
-                <a href="{{url}}" target="_blank">{{title}} →</a>
-            {{/each}}
-        </div>
+
     </div>
 </body>
 </html>
