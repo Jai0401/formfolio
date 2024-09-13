@@ -15,6 +15,7 @@
             --project-hover: #e0e0e0;
             --description-color: #333;
             --year-color: #666;
+            --glow-color: rgba(255, 255, 255, 0.1);
         }
 
         [data-theme="dark"] {
@@ -24,6 +25,7 @@
             --project-hover: #3a3a3a;
             --description-color: #cccccc;
             --year-color: #999999;
+            --glow-color: rgba(255, 255, 255, 0.05);
         }
 
         body {
@@ -74,11 +76,17 @@
             padding: 20px;
             background-color: var(--project-bg);
             border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        [data-theme="dark"] .project {
+            box-shadow: 0 0 10px var(--glow-color);
         }
         .project:hover {
             background-color: var(--project-hover);
             transform: scale(1.01);
+        }
+        [data-theme="dark"] .project:hover {
+            box-shadow: 0 0 15px var(--glow-color);
         }
         .project h3 {
             font-family: 'DM Sans', sans-serif;
