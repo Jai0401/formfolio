@@ -1,12 +1,10 @@
-import Form from "./_components/Form";
-import Navbar from "./_components/Navbar";
+import Landing from "./_components/Landing";
 
 
 export default function Home() {
   return (
     <>
-    <Navbar />
-    <Form />
+      <Landing />
     </>
   );
 }
